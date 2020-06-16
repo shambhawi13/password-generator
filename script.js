@@ -22,10 +22,22 @@ function generatePassword(){
     len = prompt('Enter the length of password between 8 and 128 characters');
   }
   var isLowerCase = confirm('Do you want lowercase in password');  
-  var lowerCase = isLowerCase? prompt('Enter number of lowercase characters') : 0;
+  //var lowerCase = isLowerCase? prompt('Enter number of lowercase characters') : 0;
 
   var isUpperCase = confirm('Do you want uppercase in password');
-  var upperCase = isUpperCase? prompt('Enter number of uppercase characters') : 0;
+  //var upperCase = isUpperCase? prompt('Enter number of uppercase characters') : 0;
+
+  var isNumber = confirm('Do you want number in password');
+  //var num = isNumber? prompt('Enter number of numeric characters') : 0;
+
+  var isSpecialChar = confirm('Do you want special characters in password');
+  //var sc = isSpecialChar? prompt('Enter number of special characters') : 0;
+
+  if(!isLowerCase && !isUpperCase && !isNumber && !isSpecialChar){
+    alert('Atleast one character should be selected. Please try again');
+  }
+
+
 }
 
 // Add event listener to generate button
