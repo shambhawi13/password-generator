@@ -5,8 +5,13 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
+  if(password){
+    passwordText.value = password;
+  }
+  else{
+    passwordText.value = '';
+  }
+  
 
 }
 
@@ -57,6 +62,7 @@ function generatePassword() {
 
       pass += str.charAt(char)
     }
+    return pass;
   }
 
 
