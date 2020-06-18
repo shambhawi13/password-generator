@@ -5,13 +5,13 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-  if(password){
+  if (password) {
     passwordText.value = password;
   }
-  else{
+  else {
     passwordText.value = '';
   }
-  
+
 
 }
 
@@ -27,39 +27,43 @@ function generatePassword() {
     len = prompt('Enter the length of password between 8 and 128 characters');
   }
   var isLowerCase = confirm('Do you want lowercase in password');
-  //var lowerCase = isLowerCase? prompt('Enter number of lowercase characters') : 0;
 
   var isUpperCase = confirm('Do you want uppercase in password');
-  //var upperCase = isUpperCase? prompt('Enter number of uppercase characters') : 0;
 
   var isNumber = confirm('Do you want number in password');
-  //var num = isNumber? prompt('Enter number of numeric characters') : 0;
 
   var isSpecialChar = confirm('Do you want special characters in password');
-  //var sc = isSpecialChar? prompt('Enter number of special characters') : 0;
 
   if (!isLowerCase && !isUpperCase && !isNumber && !isSpecialChar) {
     alert('Atleast one character should be selected. Please try again');
   }
   else {
     var str = '';
+    var pass = '';
     if (isLowerCase) {
-      str = str + 'abcdefghijklmnopqrstuvwxyz';
+      var lowerCaseChar = 'abcdefghijklmnopqrstuvwxyz';
+      str = str + lowerCaseChar;
+      pass = pass + lowerCaseChar.charAt(Math.floor(Math.random() * lowerCaseChar.length));
     }
     if (isUpperCase) {
-      str = str + 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      var upperCaseChar = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      str = str + upperCaseChar;
+      pass = pass + upperCaseChar.charAt(Math.floor(Math.random() * upperCaseChar.length));
     }
     if (isNumber) {
-      str = str + '0123456789';
+      var numberChar = '0123456789';
+      str = str + numberChar;
+      pass = pass + numberChar.charAt(Math.floor(Math.random() * numberChar.length));
     }
     if (isSpecialChar) {
-      str = str + '@#$&*';
+      var specialChar = '@#$&*(),.-_';
+      str = str + specialChar;
+      pass = pass + specialChar.charAt(Math.floor(Math.random() * specialChar.length));
     }
-    var pass = '';
-    for (var i = 0; i < len; i++) {
+    var iterationLeft = len - pass.length;
+    for (var i = 0; i < iterationLeft; i++) {
       var char = Math.floor(Math.random()
         * str.length + 1);
-
       pass += str.charAt(char)
     }
     return pass;
